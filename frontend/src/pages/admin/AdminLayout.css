@@ -1,0 +1,294 @@
+/* ==========================================================================
+   ADMIN APPLICATION SHELL STYLES
+   ========================================================================== */
+
+.admin-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAF7F2;
+  color: #241A1B;
+}
+
+/* Top Navigation Bar */
+.admin-topbar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E8DFD3;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 1px 3px rgba(36, 26, 27, 0.04);
+}
+
+.admin-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #5C1D24;
+  padding: 0.25rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.admin-brand-name {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #5C1D24;
+}
+
+.admin-brand-badge {
+  background-color: #5C1D24;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.btn-view-storefront {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #5C1D24;
+  background-color: #FDF9F2;
+  border: 1px solid #E0D4C3;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-view-storefront:hover {
+  background-color: #5C1D24;
+  color: #FFFFFF;
+  border-color: #5C1D24;
+}
+
+.admin-account-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2E5A36;
+  background-color: #EEF4F0;
+  border: 1px solid #D1E2D6;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.admin-account-name {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-logout-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6B5E59;
+  background: transparent;
+  border: 1px solid #E8DFD3;
+  padding: 0.38rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-logout-action:hover {
+  background-color: #FDF0ED;
+  color: #9B2226;
+  border-color: #F5C6CB;
+}
+
+/* Workspace Layout */
+.admin-workspace {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 60px);
+}
+
+/* Sidebar Navigation */
+.admin-sidebar {
+  width: 240px;
+  background-color: #FFFFFF;
+  border-right: 1px solid #E8DFD3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 0.85rem;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #948680;
+  padding: 0 0.65rem 0.65rem 0.65rem;
+}
+
+.admin-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #554844;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.admin-nav-link .nav-icon {
+  color: #8C7C75;
+  transition: color 0.2s ease;
+}
+
+.admin-nav-link:hover {
+  background-color: #F8F4ED;
+  color: #5C1D24;
+}
+
+.admin-nav-link:hover .nav-icon {
+  color: #5C1D24;
+}
+
+.admin-nav-link.active {
+  background-color: #5C1D24;
+  color: #FFFFFF;
+}
+
+.admin-nav-link.active .nav-icon {
+  color: #C59B27;
+}
+
+/* Sidebar Footer */
+.admin-sidebar-footer {
+  padding: 1rem 0.65rem 0.25rem 0.65rem;
+  border-top: 1px solid #F0EAE1;
+}
+
+.store-location-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #8C7C75;
+}
+
+.store-location-info strong {
+  color: #380C10;
+  font-weight: 600;
+}
+
+/* Main Content Area */
+.admin-main-viewport {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Responsive / Mobile Drawer */
+@media (max-width: 900px) {
+  .admin-mobile-toggle {
+    display: inline-flex;
+  }
+
+  .admin-mobile-backdrop {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(36, 26, 27, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 150;
+  }
+
+  .admin-sidebar {
+    position: fixed;
+    top: 60px;
+    left: -260px;
+    bottom: 0;
+    z-index: 160;
+    transition: left 0.25s ease;
+    box-shadow: 4px 0 16px rgba(36, 26, 27, 0.1);
+  }
+
+  .admin-sidebar.mobile-open {
+    left: 0;
+  }
+
+  .admin-main-viewport {
+    padding: 1.25rem 1rem;
+  }
+
+  .admin-account-name {
+    max-width: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-store-text,
+  .logout-text {
+    display: none;
+  }
+
+  .btn-view-storefront {
+    padding: 0.4rem;
+  }
+
+  .admin-logout-action {
+    padding: 0.4rem;
+  }
+}

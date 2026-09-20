@@ -1,0 +1,219 @@
+/* ==========================================================================
+   ADMIN ORDERS STYLES
+   ========================================================================== */
+
+.admin-orders-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Status Filter Tabs */
+.order-filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.order-filter-tab-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #E8DFD3;
+  background-color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6B5E59;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.order-filter-tab-btn:hover {
+  background-color: #FAF7F2;
+  color: #380C10;
+}
+
+.order-filter-tab-btn.active {
+  background-color: #5C1D24;
+  border-color: #5C1D24;
+  color: #FFFFFF;
+}
+
+/* Order Table */
+.order-customer-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.destination-tag {
+  display: inline-block;
+  background-color: #FAF7F2;
+  border: 1px solid #E0D4C3;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #554844;
+}
+
+.fee-to-confirm-pill {
+  display: inline-block;
+  background-color: #FEF3C7;
+  color: #92400E;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.order-total-highlight {
+  color: #380C10;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Modal Specifics */
+.order-modal-width {
+  max-width: 820px;
+}
+
+.modal-order-number {
+  color: #5C1D24;
+  font-family: monospace;
+}
+
+.modal-date-info {
+  display: block;
+  font-size: 0.8rem;
+  color: #8C7C75;
+  margin-top: 0.2rem;
+}
+
+.order-info-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.order-info-card {
+  background-color: #FAF7F2;
+  border: 1px solid #E8DFD3;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #5C1D24;
+  margin-bottom: 0.25rem;
+}
+
+.info-card-name {
+  font-size: 1rem;
+  color: #241A1B;
+}
+
+.info-card-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #2E5A36;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.info-card-phone:hover {
+  text-decoration: underline;
+}
+
+.info-card-address {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #554844;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.order-items-table th {
+  background-color: #FFFFFF;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #E8DFD3;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6B5E59;
+}
+
+.order-items-table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid #F0EAE1;
+  color: #241A1B;
+}
+
+.form-grid-2-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.input-hint-text {
+  font-size: 0.76rem;
+  color: #8C7C75;
+  line-height: 1.35;
+}
+
+.recalculated-totals-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0D4C3;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.recalc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  color: #6B5E59;
+}
+
+.recalc-total-row {
+  border-top: 1px dashed #E0D4C3;
+  padding-top: 0.5rem;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #380C10;
+}
+
+.recalc-total-val {
+  font-size: 1.15rem;
+  color: #5C1D24;
+}
+
+@media (max-width: 768px) {
+  .order-info-two-col,
+  .form-grid-2-inputs {
+    grid-template-columns: 1fr;
+  }
+}

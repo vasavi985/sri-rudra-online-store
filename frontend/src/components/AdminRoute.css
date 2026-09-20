@@ -1,0 +1,82 @@
+.admin-guard-state {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--color-text-muted, #718096);
+}
+
+.admin-access-denied-page {
+  padding: 4rem 1rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-access-denied-card {
+  max-width: 540px;
+  margin: 0 auto;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid rgba(229, 62, 62, 0.25);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+}
+
+.denied-icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(229, 62, 62, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.denied-icon {
+  color: #e53e3e;
+}
+
+.denied-badge {
+  display: inline-block;
+  background: rgba(229, 62, 62, 0.1);
+  color: #c53030;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+.denied-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-main, #1a202c);
+  margin-bottom: 0.75rem;
+}
+
+.denied-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted, #4a5568);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.denied-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+@media (min-width: 480px) {
+  .denied-actions {
+    flex-direction: row;
+  }
+}

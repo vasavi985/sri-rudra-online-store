@@ -1,0 +1,297 @@
+:root {
+  /* Sri Rudra Brand Color Palette */
+  --color-primary: #5C1D24;        /* Deep traditional maroon */
+  --color-primary-dark: #3F1217;   /* Rich dark burgundy */
+  --color-primary-darker: #2D0B0F; /* Deepest plum maroon */
+  --color-primary-light: #7A2831;  /* Soft maroon */
+  --color-primary-subtle: rgba(92, 29, 36, 0.08);
+  --color-primary-glow: rgba(92, 29, 36, 0.16);
+
+  /* Gold & Brass Accents */
+  --color-gold: #C59B27;           /* Temple gold */
+  --color-gold-dark: #9A7718;      /* Deep antique gold */
+  --color-gold-light: #FAF3DE;     /* Warm champagne gold */
+  --color-gold-border: #E8D397;    /* Subtle gold border */
+  --color-gold-gradient: linear-gradient(135deg, #D4AF37 0%, #B3861B 100%);
+
+  /* Fresh Agricultural Greens */
+  --color-green: #2F563B;
+  --color-green-light: #EEF4F0;
+  --color-green-dark: #223F2B;
+
+  /* Warm Cream & Ivory Surfaces */
+  --color-bg: #FAF7F2;             /* Warm ivory parchment */
+  --color-bg-alt: #F4EFE6;         /* Sand beige */
+  --color-surface: #FFFFFF;        /* Pure white card surface */
+  --color-surface-alt: #FAF5ED;    /* Cream card surface */
+  --color-border: #E8DFD3;         /* Warm subtle divider */
+  --color-border-light: #F2ECE1;   /* Softest divider */
+  --color-border-gold: rgba(197, 155, 39, 0.35);
+
+  /* Typography Colors */
+  --color-text-main: #241A1B;      /* Deep charcoal espresso */
+  --color-text-muted: #6B5E59;     /* Soft warm grey */
+  --color-text-light: #948680;     /* Muted metadata */
+  --color-text-inverse: #FFFFFF;   /* Clean white */
+
+  /* Status Colors */
+  --color-error: #9B2226;
+  --color-error-bg: #FDF0ED;
+  --color-success: #2F563B;
+  --color-success-bg: #EEF4F0;
+
+  /* Typography */
+  --font-serif: 'Marcellus', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 6px rgba(36, 26, 27, 0.04);
+  --shadow-md: 0 6px 16px rgba(36, 26, 27, 0.07);
+  --shadow-lg: 0 12px 30px rgba(36, 26, 27, 0.09);
+  --shadow-gold: 0 4px 14px rgba(197, 155, 39, 0.22);
+  --shadow-maroon: 0 8px 20px rgba(92, 29, 36, 0.24);
+
+  /* Layout */
+  --max-width: 1260px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.customer-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-primary-dark);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.1rem;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Global Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Button Components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-align: center;
+  border: 1.5px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-maroon);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(92, 29, 36, 0.3);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-subtle);
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.btn-gold {
+  background: var(--color-gold-gradient);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(197, 155, 39, 0.32);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Badge Components */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-gold {
+  background-color: var(--color-gold-light);
+  color: var(--color-gold-dark);
+  border: 1px solid var(--color-gold-border);
+}
+
+.badge-green {
+  background-color: var(--color-green-light);
+  color: var(--color-green);
+  border: 1px solid rgba(47, 86, 59, 0.25);
+}
+
+.badge-primary {
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary);
+  border: 1px solid rgba(92, 29, 36, 0.15);
+}
+
+/* Spinner / Loading */
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 3.5px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2.3rem;
+  }
+  h2 {
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  .container {
+    padding: 0 1.15rem;
+  }
+}

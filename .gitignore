@@ -1,0 +1,41 @@
+# Root .gitignore for Rudra Online Store
+
+# Credentials & Secrets
+**/credentials/
+credentials/
+*.pem
+*.key
+*.p12
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.*.local
+*.local
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Dependencies & Build artifacts
+target/
+build/
+dist/
+dist-ssr/
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# IDE & OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+current_user_state.png
+**/scratch/
+scratch/

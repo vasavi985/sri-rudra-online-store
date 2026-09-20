@@ -1,0 +1,348 @@
+/* ==========================================================================
+   RUDRA STORE — ADMIN LOGIN STYLES
+   Clean, premium business admin authentication
+   ========================================================================== */
+
+.admin-login-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem 2.25rem;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Brand Identity */
+.admin-brand-emblem {
+  width: 90px;
+  height: 60px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 4px 12px rgba(92, 29, 36, 0.12);
+  padding: 6px 10px;
+  overflow: hidden;
+}
+
+.admin-login-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.admin-brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.admin-brand-merchant {
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* Headings */
+.admin-heading-group {
+  margin-bottom: 1.5rem;
+}
+
+.admin-login-title {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 400;
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.admin-login-subtitle {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Feedback Banners */
+.admin-feedback-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.admin-feedback-banner.error {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  color: var(--color-error);
+}
+
+.admin-feedback-banner.success {
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success);
+}
+
+.feedback-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Form */
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.admin-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.admin-form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.admin-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.admin-input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-light);
+  pointer-events: none;
+}
+
+.admin-form-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px 0 38px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  background: #FAF7F2;
+  color: var(--color-text-main);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.admin-form-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+}
+
+.admin-form-input.has-toggle {
+  padding-right: 42px;
+}
+
+.admin-form-input.input-error {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+  box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.1);
+}
+
+.admin-form-input:disabled {
+  background-color: #F1ECE4;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.admin-password-toggle {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.admin-password-toggle:hover {
+  color: var(--color-primary);
+  background-color: rgba(92, 29, 36, 0.05);
+}
+
+.admin-password-toggle:focus-visible {
+  outline: 2px solid var(--color-gold);
+}
+
+.admin-field-error {
+  font-size: 0.76rem;
+  color: var(--color-error);
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+/* Buttons */
+.btn-admin-submit {
+  width: 100%;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  margin-top: 0.35rem;
+}
+
+.btn-admin-submit:hover:not(:disabled) {
+  background-color: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(92, 29, 36, 0.2);
+}
+
+.btn-admin-submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-admin-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-admin-back {
+  width: 100%;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-admin-back:hover:not(:disabled) {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-main);
+}
+
+/* Forgot Password Section */
+.admin-forgot-wrap {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.admin-forgot-btn {
+  background: none;
+  border: none;
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.admin-forgot-btn:hover:not(:disabled) {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* View transition animation */
+.admin-view-transition {
+  animation: adminFadeIn 0.2s ease;
+}
+
+@keyframes adminFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .admin-login-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .admin-login-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .admin-login-title {
+    font-size: 1.45rem;
+  }
+
+  .admin-login-subtitle {
+    font-size: 0.84rem;
+  }
+
+  .btn-admin-submit {
+    height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .admin-form-input {
+    height: 42px;
+    font-size: 0.9rem;
+  }
+}
