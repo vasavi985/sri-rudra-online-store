@@ -168,7 +168,7 @@ Environment files and secrets are excluded from GitHub.
 ## Customer Website
 
 ### Home Page
-<img width="1848" height="895" alt="image" src="https://github.com/user-attachments/assets/03efe4ef-b678-41c4-ac53-dc16d8138496" />
+![My Orders](https://github.com/user-attachments/assets/999bd106-b594-4ce9-9cce-a1c93290f6f9)
 
 ### Products Page
 <img width="1686" height="897" alt="image" src="https://github.com/user-attachments/assets/45043e62-07fa-4484-b8f4-1092cd3006d0" />
