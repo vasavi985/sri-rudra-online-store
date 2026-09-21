@@ -1,0 +1,19 @@
+# Exclude credentials and secrets
+credentials/
+*.json
+!pom.xml
+.env
+.env.*
+*.pem
+*.key
+
+# Exclude local build artifacts
+target/
+
+# Exclude VCS and IDE configuration
+.git
+.gitignore
+.idea/
+.vscode/
+*.iml
+HELP.md
