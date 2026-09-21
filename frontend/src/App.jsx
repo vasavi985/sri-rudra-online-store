@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout';
 import OrderSuccess from './pages/OrderSuccess';
 import MyOrders from './pages/MyOrders';
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './components/ScrollToTop';
 
 import AdminRoute from './components/AdminRoute';
 import AdminSetup from './pages/admin/AdminSetup';
@@ -26,6 +27,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AuthProvider>
         <CartProvider>
           <div className="app-container">
