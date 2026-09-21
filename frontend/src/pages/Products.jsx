@@ -2,7 +2,11 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getProducts } from '../services/productService';
 import { getCategories } from '../services/categoryService';
-import { OFFICIAL_CATEGORIES, mergeProductsWithCatalog } from '../utils/productCatalog';
+import {
+  OFFICIAL_CATEGORIES,
+  mergeProductsWithCatalog,
+  getCanonicalCatalog
+} from '../utils/productCatalog';
 import ProductCard from '../components/ProductCard';
 import {
   Search,
@@ -10,7 +14,8 @@ import {
   ArrowUpDown,
   Sparkles,
   PackageOpen,
-  RefreshCw
+  RefreshCw,
+  Info
 } from 'lucide-react';
 import './Products.css';
 
@@ -18,9 +23,12 @@ const Products = () => {
   const [products, setProducts] = useState(() => mergeProductsWithCatalog([]));
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isRetrying, setIsRetrying] = useState(false);
+  const [apiError, setApiError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [retryCount, setRetryCount] = useState(0);
 
-  // Load from backend once on mount
+  // Load from backend once on mount and upon manual retry
   useEffect(() => {
     let isMounted = true;
 
@@ -40,21 +48,43 @@ const Products = () => {
     getProducts()
       .then((remoteList) => {
         if (!isMounted) return;
-        if (Array.isArray(remoteList)) {
+
+        if (Array.isArray(remoteList) && remoteList.length > 0) {
           setProducts(mergeProductsWithCatalog(remoteList));
+          setApiError(null);
+        } else if (Array.isArray(remoteList) && remoteList.length === 0) {
+          // Backend responded with empty array
+          console.warn('Backend returned empty products array, rendering canonical catalog.');
+          setProducts(getCanonicalCatalog());
+          setApiError('The product catalog is currently being updated. Displaying available products.');
+        } else {
+          setProducts(getCanonicalCatalog());
+          setApiError('The store server returned an unexpected response. Displaying available products.');
         }
       })
       .catch((err) => {
         console.warn('Backend product loading error, rendering canonical catalog:', err);
+        if (!isMounted) return;
+        // Do not leave products empty; show verified canonical catalog:
+        setProducts(getCanonicalCatalog());
+        setApiError('The store server is waking up or temporarily unavailable. Displaying available products.');
       })
       .finally(() => {
-        if (isMounted) setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+          setIsRetrying(false);
+        }
       });
 
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [retryCount]);
+
+  const handleRetry = () => {
+    setIsRetrying(true);
+    setRetryCount((prev) => prev + 1);
+  };
 
   // Category and search state derived directly from searchParams
   const activeCategory = searchParams.get('category') || 'all';
@@ -70,7 +100,9 @@ const Products = () => {
       const exists = list.some(
         (c) =>
           c.id === canonicalCat.id ||
-          c.name.toLowerCase() === canonicalCat.name.toLowerCase() ||
+          c.name.toLowerCase().trim() === canonicalCat.name.toLowerCase().trim() ||
+          (c.name.toLowerCase().includes('ravva') && canonicalCat.name.toLowerCase().includes('ravva')) ||
+          (c.name.toLowerCase().includes('grocery') && canonicalCat.name.toLowerCase().includes('grocery')) ||
           (canonicalCat.slug && c.name.toLowerCase().includes(canonicalCat.slug))
       );
       if (!exists) {
@@ -125,7 +157,7 @@ const Products = () => {
         // Traditional Flours matching
         if (
           (target === 'aspoalsjctqeyr6yeln1' || target === 'flours') &&
-          (catId === 'aspoalsjctqeyr6yeln1' || catName.includes('flour'))
+          (catId === 'aspoalsjctqeyr6yeln1' || catId === 'flours' || catName.includes('flour'))
         ) {
           return true;
         }
@@ -133,13 +165,26 @@ const Products = () => {
         // Dal & Pulses matching
         if (
           (target === 'wuhiminuuecsno1ojnkh' || target === 'dal-and-pulses') &&
-          (catId === 'wuhiminuuecsno1ojnkh' || catName.includes('dal') || catName.includes('pulse'))
+          (catId === 'wuhiminuuecsno1ojnkh' || catId === 'dal-and-pulses' || catName.includes('dal') || catName.includes('pulse'))
         ) {
           return true;
         }
 
-        if (target === 'ravva-semolina' && (catName.includes('ravva') || catName.includes('semolina'))) return true;
-        if (target === 'other-grocery' && (catName.includes('grocery') || catName.includes('other'))) return true;
+        // Ravva & Semolina matching (backend ID gWPad04z2ZXto8lH5S2r or slug ravva-semolina)
+        if (
+          (target === 'gwpad04z2zxto8lh5s2r' || target === 'ravva-semolina') &&
+          (catId === 'gwpad04z2zxto8lh5s2r' || catId === 'ravva-semolina' || catName.includes('ravva') || catName.includes('semolina'))
+        ) {
+          return true;
+        }
+
+        // Other Grocery matching (backend ID W9Ttq2hwN0yqAM5lngFl or slug other-grocery)
+        if (
+          (target === 'w9ttq2hwn0yqam5lngfl' || target === 'other-grocery') &&
+          (catId === 'w9ttq2hwn0yqam5lngfl' || catId === 'other-grocery' || catName.includes('grocery') || catName.includes('other'))
+        ) {
+          return true;
+        }
 
         return false;
       });
@@ -193,6 +238,29 @@ const Products = () => {
 
       {/* 2. Main Storefront Content */}
       <div className="container products-page-container">
+        {/* Server Notice Banner when operating on fallback catalog */}
+        {apiError && !loading && (
+          <div className="products-status-banner" role="status">
+            <div className="status-banner-content">
+              <Info size={18} className="status-banner-icon" />
+              <div className="status-banner-text">
+                <span className="status-banner-title">Store Notice:</span>
+                <span className="status-banner-msg">{apiError}</span>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="status-retry-btn"
+              onClick={handleRetry}
+              disabled={isRetrying}
+              aria-label="Retry connection to server"
+            >
+              <RefreshCw size={14} className={isRetrying ? 'spin-icon' : ''} />
+              <span>{isRetrying ? 'Connecting...' : 'Retry Connection'}</span>
+            </button>
+          </div>
+        )}
+
         {/* Category Pill Filters Bar */}
         <nav className="products-category-bar" aria-label="Filter products by category">
           <div className="category-bar-label">
@@ -294,17 +362,30 @@ const Products = () => {
             <p className="empty-desc">
               We couldn't find any products matching your current search or category filter.
             </p>
-            <button
-              type="button"
-              className="btn btn-outline empty-reset-btn"
-              onClick={() => {
-                clearSearch();
-                handleCategorySelect('all');
-              }}
-            >
-              <RefreshCw size={15} />
-              <span>Reset Filters</span>
-            </button>
+            <div className="empty-actions-row">
+              <button
+                type="button"
+                className="btn btn-outline empty-reset-btn"
+                onClick={() => {
+                  clearSearch();
+                  handleCategorySelect('all');
+                }}
+              >
+                <RefreshCw size={15} />
+                <span>Reset Filters</span>
+              </button>
+              {apiError && (
+                <button
+                  type="button"
+                  className="btn btn-primary empty-retry-btn"
+                  onClick={handleRetry}
+                  disabled={isRetrying}
+                >
+                  <RefreshCw size={15} className={isRetrying ? 'spin-icon' : ''} />
+                  <span>{isRetrying ? 'Retrying...' : 'Retry Server'}</span>
+                </button>
+              )}
+            </div>
           </div>
         )}
 

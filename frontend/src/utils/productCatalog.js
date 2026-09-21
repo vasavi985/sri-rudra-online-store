@@ -14,13 +14,13 @@ export const OFFICIAL_CATEGORIES = [
     description: 'Wholesome, protein-rich lentils and dals selected for daily home cooking.',
   },
   {
-    id: 'ravva-semolina',
+    id: 'gWPad04z2ZXto8lH5S2r',
     slug: 'ravva-semolina',
-    name: 'Ravva / Semolina',
+    name: 'Ravva & Semolina',
     description: 'Coarse and fine ravva varieties for wholesome breakfast preparations.',
   },
   {
-    id: 'other-grocery',
+    id: 'W9Ttq2hwN0yqAM5lngFl',
     slug: 'other-grocery',
     name: 'Other Grocery',
     description: 'Essential kitchen seasonings, sweeteners, and daily cooking staples.',
@@ -169,7 +169,8 @@ export const getCategoryName = (categoryId) => {
   if (found) return found.name;
   if (target === 'aspoalsjctqeyr6yeln1' || target.includes('flour')) return 'Traditional Flours';
   if (target === 'wuhiminuuecsno1ojnkh' || target.includes('dal') || target.includes('pulse')) return 'Dal & Pulses';
-  if (target.includes('ravva') || target.includes('semolina')) return 'Ravva / Semolina';
+  if (target === 'gwpad04z2zxto8lh5s2r' || target === 'ravva-semolina' || target.includes('ravva') || target.includes('semolina')) return 'Ravva & Semolina';
+  if (target === 'w9ttq2hwn0yqam5lngfl' || target === 'other-grocery' || target.includes('grocery') || target.includes('other')) return 'Other Grocery';
   return 'Daily Essentials';
 };
 
@@ -229,6 +230,24 @@ export const mergeProductsWithCatalog = (remoteProducts = []) => {
       imageUrl: rp.imageUrl || (Array.isArray(rp.imageUrls) && rp.imageUrls[0]) || canonical?.imageUrl || '',
       imageUrls: Array.isArray(rp.imageUrls) && rp.imageUrls.length > 0 ? rp.imageUrls : (rp.imageUrl ? [rp.imageUrl] : []),
       variants: Array.isArray(rp.variants) ? rp.variants.filter((v) => v && v.active !== false) : [],
+    };
+  });
+};
+
+/**
+ * Return the canonical catalog enriched with resolved images and category names
+ * for graceful offline fallback when the backend server is temporarily unavailable.
+ */
+export const getCanonicalCatalog = () => {
+  return CANONICAL_PRODUCTS.map((p) => {
+    const resolvedImage = getProductImage(p);
+    return {
+      ...p,
+      active: true,
+      categoryName: p.categoryName || getCategoryName(p.categoryId),
+      imageUrl: resolvedImage,
+      imageUrls: [resolvedImage],
+      variants: Array.isArray(p.variants) ? p.variants : [],
     };
   });
 };
