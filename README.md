@@ -163,42 +163,6 @@ Backend CORS is restricted to approved frontend domains.
 Firebase service-account credentials are not stored in the repository.
 Environment files and secrets are excluded from GitHub.
 
-## Screenshots
-
-## Customer Website
-
-### Home Page
-![My Orders](https://github.com/user-attachments/assets/999bd106-b594-4ce9-9cce-a1c93290f6f9)
-
-### Products Page
-<img width="1686" height="897" alt="image" src="https://github.com/user-attachments/assets/45043e62-07fa-4484-b8f4-1092cd3006d0" />
-
-### Shopping Cart
-<img width="1768" height="867" alt="image" src="https://github.com/user-attachments/assets/d043df1e-b73d-47e3-8978-56fd4ace25b9" />
-
-### Checkout
-<img width="1725" height="856" alt="image" src="https://github.com/user-attachments/assets/dfe09f0c-e82c-4581-b66a-7016921f9488" />
-
-### My Orders
-<img width="1783" height="857" alt="image" src="https://github.com/user-attachments/assets/999bd106-b594-4ce9-9cce-a1c93290f6f9" />
-
-## Admin Dashboard
-
-### Admin Overview
-<img width="1906" height="885" alt="image" src="https://github.com/user-attachments/assets/f61ee83f-9a65-46a4-9638-e3d2da066b77" />
-
-### Products Management
-<img width="1870" height="872" alt="image" src="https://github.com/user-attachments/assets/c9e3b3d1-398c-402b-af22-177f2ec57f38" />
-
-### Categories Management
-<img width="1892" height="886" alt="image" src="https://github.com/user-attachments/assets/373083c9-0d3a-4b76-976b-06b05ab7f2dc" />
-
-### Orders Management
-<img width="1895" height="897" alt="image" src="https://github.com/user-attachments/assets/a3e4db53-c739-4458-9d50-4943acdae3fe" />
-
-### Inventory
-<img width="1886" height="890" alt="image" src="https://github.com/user-attachments/assets/9dbb66ac-5b26-48cd-9298-b455efe3bb15" />
-
 📍 Business Information
 
 Sri Rudra
